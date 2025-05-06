@@ -1,0 +1,4 @@
+.background-clear {
+    image-rendering: auto;
+    -ms-interpolation-mode: bicubic;
+}
