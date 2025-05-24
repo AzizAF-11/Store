@@ -9,7 +9,8 @@ return new class extends Migration
     public function up(): void {
         Schema::create('ulasan', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('transaksi_id')->constrained('transaksi')->onDelete('cascade');
+            $table->foreignId('bahan_baku_id')->constrained('bahan_baku')->onDelete('cascade')->nullable();
+            $table->foreignId('product_id')->constrained('produk_umkm')->onDelete('cascade')->nullable();
             $table->foreignId('reviewer_id')->constrained('users')->onDelete('cascade');
             $table->integer('rating');
             $table->text('komentar')->nullable();
