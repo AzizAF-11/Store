@@ -20,24 +20,23 @@ class Login extends Component
         if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
             session()->regenerate();
 
-            // Ambil user yang sudah login
             $user = Auth::user();
 
-            // Cek role dan redirect sesuai
             if ($user->role === 'pencari bahan baku') {
                 return $this->redirect('/dashboard');
+            } elseif ($user->role === 'penyedia bahan baku') {
+                return $this->redirect('/dashboard-penjual');
             }
 
-            $this->dispatch('showNotification', [
-                'type' => 'success',
-                'message' => 'Account created successfully. Please login.',
-            ]);
-
-            $this->dispatch('close-login-modal'); 
+            // Jika role tidak dikenal
+            Auth::logout();
+            $this->addError('email', 'Role tidak dikenali.');
+            return;
         } else {
             $this->addError('email', 'Email atau password salah.');
         }
     }
+
 
     public function render()
     {
