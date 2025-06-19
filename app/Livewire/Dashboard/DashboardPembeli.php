@@ -6,8 +6,16 @@ use Livewire\Component;
 
 class DashboardPembeli extends Component
 {
-    
-    public $activeTab = 'bahan-baku'; 
+
+    public $activeTab = 'bahan-baku';
+
+    public $search = '';
+
+    public function updatedSearch()
+    {
+        $this->dispatch('searchUpdated', $this->search);
+    }
+
 
     public function setTab($tab)
     {

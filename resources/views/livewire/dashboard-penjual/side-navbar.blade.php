@@ -2,11 +2,15 @@
     class="relative font-ibm">
     <!-- Sidebar -->
     <div :class="open ? 'w-74' : 'w-22'"
-        class="bg-gray-200 h-lvh p-4 m-3 shadow-lg rounded-xl font-ibm transition-all duration-300 overflow-hidden">
+        class="bg-white min-h-screen p-4 m-3 shadow-lg rounded-xl font-ibm transition-all duration-300 overflow-hidden">
         <!-- Logo -->
         <div class="text-2xl font-bold mb-8">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-gray-400 rounded-full"></div>
+            <div :class="open ? 'justify-start' : 'justify-center'" class="flex items-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 rounded-full p-1 bg-gray-300 text-gray-600"
+                    fill="currentColor" viewBox="0 0 448 512">
+                    <path
+                        d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z" />
+                </svg>
                 <span x-show="open" class="transition-opacity duration-300">FILA</span>
             </div>
         </div>
@@ -15,8 +19,9 @@
         <div class="text-gray-600 font-medium space-y-2">
             <div class="text-sm text-gray-500 mb-2" x-show="open">Management</div>
 
-            <a href="#" class="flex items-center gap-6 px-2 py-2 rounded-md bg-gray-300 font-bold">
-                <svg xmlns="http://www.w3.org/2000/svg" width="42" viewBox="0 0 32 32" id="menu">
+            <a href="" wire:click.prevent="changeTo('dashboard')" :class="open ? 'justify-start' : 'justify-center'" class="flex items-center gap-6 px-2 py-2 rounded-md hover:bg-gray-200 {{ $currentTab === 'dashboard' ? 'bg-gray-200' : '' }}">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" viewBox="0 0 32 32" id="menu">
                     <rect width="13" height="13" x="1" y="1" fill="#4d4e53" rx="4" ry="4"></rect>
                     <rect width="13" height="13" x="18" y="1" fill="#4d4e53" rx="4" ry="4"></rect>
                     <rect width="13" height="13" x="1" y="18" fill="#4d4e53" rx="4" ry="4"></rect>
@@ -26,8 +31,9 @@
                 <span x-show="open" class="text-lg">Dashboard</span>
             </a>
 
-            <a href="#" class="flex items-center gap-6 px-2 py-2 rounded-md hover:bg-gray-200">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="#4d4e53" width="42" enable-background="new 0 0 1024 1024"
+            <a :class="open ? 'justify-start' : 'justify-center'" class="flex items-center gap-6 px-2 py-2 rounded-md hover:bg-gray-200 ">
+
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#4d4e53" width="30" enable-background="new 0 0 1024 1024"
                     viewBox="0 0 1024 1024" id="order">
                     <path d="M537.2,918.7c-14.1-7.4-28.2-14.9-42.3-22.3c-33.9-17.9-67.7-35.8-101.6-53.7
 				c-41.1-21.7-82.3-43.4-123.4-65.2c-35.4-18.7-70.9-37.4-106.3-56.1c-17.2-9.1-34.3-18.5-51.7-27.3c-0.2-0.1-0.5-0.3-0.7-0.4
@@ -84,12 +90,12 @@
 				c-17.2,9.1-34.7,17.9-51.7,27.3c-0.2,0.1-0.5,0.3-0.7,0.4c-10.8,5.7-19.8,18.3-23,29.9c-3.3,12-1.8,27.9,5,38.5
 				C270.9,448.8,299.4,456.3,324.2,443.2L324.2,443.2z"></path>
                 </svg>
-                <span x-show="open">Order Management</span>
+                <span x-show="open" class="text-lg">Order Management</span>
             </a>
 
-            <a href="#" class="flex items-center gap-6 px-2 py-2 rounded-md hover:bg-gray-200">
+            <a wire:click.prevent="changeTo('product')" :class="open ? 'justify-start' : 'justify-center'" class="flex items-center gap-6 px-2 py-2 rounded-md hover:bg-gray-200 cursor-pointer  {{ $currentTab === 'product' ? 'bg-gray-200' : '' }}">
 
-                <svg xmlns="http://www.w3.org/2000/svg" width="42" fill="#4d4e53" viewBox="0 0 64 64" id="product">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" fill="#4d4e53" viewBox="0 0 64 64" id="product">
                     <path
                         d="M27 51.87A3.9916 3.9916 0 0030 48V28a3.9916 3.9916 0 00-3-3.87A3.65643 3.65643 0 0026 24H6a3.99887 3.99887 0 00-4 4V48a3.99891 3.99891 0 004 4H26A3.65874 3.65874 0 0027 51.87zM11 48H7a1.00011 1.00011 0 01.00006-2H11A1.00011 1.00011 0 0111 48zm2-4H7a1.00011 1.00011 0 01.00006-2H13A1.00011 1.00011 0 0113 44zm9-15a3.00883 3.00883 0 01-3 3H13a3.00883 3.00883 0 01-3-3V26h2v3a1.003 1.003 0 001 1h6a1.003 1.003 0 001-1V26h2zM36 17H46a3.01107 3.01107 0 003-3V9a3.00879 3.00879 0 00-3-3H36a3.00879 3.00879 0 00-3 3v5A3.01309 3.01309 0 0036 17z">
                     </path>
@@ -105,8 +111,8 @@
 
             <div class="text-sm text-gray-500 mt-6 mb-2" x-show="open">Personal</div>
 
-            <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-200">
-                <svg xmlns="http://www.w3.org/2000/svg" width="42" fill="#4d4e53" viewBox="0 0 32 32" id="message">
+            <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-200" :class="open ? 'justify-start' : 'justify-center'">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" fill="#4d4e53" viewBox="0 0 32 32" id="message">
                     <path
                         d="M26,5H6A3,3,0,0,0,3,8V19a3,3,0,0,0,3,3H7v4a1,1,0,0,0,.6.92A1.1,1.1,0,0,0,8,27a1,1,0,0,0,.68-.27L13.77,22H26a3,3,0,0,0,3-3V8A3,3,0,0,0,26,5ZM19,17H9a1,1,0,0,1,0-2H19a1,1,0,0,1,0,2Zm4-5H9a1,1,0,0,1,0-2H23a1,1,0,0,1,0,2Z">
                     </path>
@@ -114,8 +120,8 @@
                 <span x-show="open">Message</span>
             </a>
 
-            <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-200">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" fill="#4d4e53" style="isolation:isolate"
+            <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-200" :class="open ? 'justify-start' : 'justify-center'">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" fill="#4d4e53" style="isolation:isolate"
                     viewBox="0 0 64 64" id="notofication-bell">
                     <defs>
                         <clipPath id="a">
@@ -131,8 +137,8 @@
                 <span x-show="open" class="text-lg">Notifications</span>
             </a>
 
-            <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-200">
-                <svg xmlns="http://www.w3.org/2000/svg" width="42" fill="#4d4e53" viewBox="0 0 24 24" id="settings">
+            <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-200" :class="open ? 'justify-start' : 'justify-center'">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" fill="#4d4e53" viewBox="0 0 24 24" id="settings">
                     <path fill="none" d="M0 0h24v24H0V0z"></path>
                     <path
                         d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z">

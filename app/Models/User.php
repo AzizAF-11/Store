@@ -46,7 +46,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    
+
+    public function profilePenyedia()
+    {
+        return $this->hasOne(ProfilPenyedia::class, 'user_id');
+    }
+
+
 }
 
 

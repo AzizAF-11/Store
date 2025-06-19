@@ -1,4 +1,4 @@
-<div class="bg-gray-100 min-h-screen text-gray-800 ">
+<div class="bg-[#EEEEEE] min-h-screen text-[#222831] ">
 
     {{-- Include Navbar Component --}}
     @livewire('navbar')
@@ -15,11 +15,11 @@
         <div class="absolute inset-0 bg-black/50 flex justify-center items-center">
 
             <div
-                class="w-[120vw] h-[25rem] sm:w-[35rem] sm:h-[35rem] bg-white rounded-[42%] flex justify-center items-center shadow-lg text-center p-4 overflow-hidden">
+                class="w-[120vw] h-[25rem] sm:w-[35rem] sm:h-[35rem] bg-[#EEEEEE] rounded-[42%] flex justify-center items-center shadow-lg text-center p-4 overflow-hidden">
                 <div class="flex items-center gap-4">
                     <img src="{{ asset('images/img2.png') }}" alt="Logo FILA" class="w-43 h-43 object-contain">
                     <div class="text-left">
-                        <h2 class="text-2xl font-bold text-gray-800 font-rubix grid grid-cols-11 gap-x-1 text-center">
+                        <h2 class="text-2xl font-bold text-[#222831] font-rubix grid grid-cols-11 gap-x-1 text-center">
                             <span class="brand-letter">F</span>
                             <span class="brand-letter">I</span>
                             <span class="brand-letter">L</span>
@@ -64,7 +64,7 @@
                 untuk memasarkan produknya secara lebih luas dan mudah dijangkau.
             </p>
             <a href="{{ url('about') }}">
-                <button class="bg-[#3B2F1E] text-white px-6 py-2 rounded font-ibm font-bold box-hover cursor-pointer">
+                <button class="bg-[#393E46] text-white px-6 py-2 rounded font-ibm font-bold box-hover cursor-pointer">
                     Know More
                 </button>
             </a>

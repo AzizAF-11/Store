@@ -28,7 +28,6 @@ class Login extends Component
                 return $this->redirect('/dashboard-penjual');
             }
 
-            // Jika role tidak dikenal
             Auth::logout();
             $this->addError('email', 'Role tidak dikenali.');
             return;

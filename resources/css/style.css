@@ -1,4 +1,17 @@
+[x-cloak] { display: none !important; }
+
 .background-clear {
     image-rendering: auto;
     -ms-interpolation-mode: bicubic;
+}
+
+.ql-font-ibm {
+    font-family: "IBM Plex Sans", sans-serif;
+}
+
+/* Tampilkan nama font di dropdown Quill */
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="ibm"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="ibm"]::before {
+    content: "IBM Plex";
+    font-family: "IBM Plex Sans", sans-serif;
 }

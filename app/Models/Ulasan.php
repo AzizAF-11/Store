@@ -24,11 +24,6 @@ class Ulasan extends Model
         return $this->belongsTo(BahanBaku::class);
     }
 
-    public function product()
-    {
-        return $this->belongsTo(Product::class);
-    }
-
     public function reviewer()
     {
         return $this->belongsTo(User::class, 'reviewer_id');
